@@ -12,7 +12,7 @@ public class MobCollision : MonoBehaviour
             Explode(col.transform.parent.rotation, col.transform.parent.parent.localScale);
         }
         
-        if (col.CompareTag("Chest")) {
+        if (col.CompareTag("Campfire")) {
             GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().GameOver();
         }
     }
