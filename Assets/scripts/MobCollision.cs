@@ -4,6 +4,12 @@ using System.Collections;
 public class MobCollision : MonoBehaviour
 {
     public GameObject deathParts;
+    GameController gc;
+    
+    void Start()
+    {
+        gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+    }
     
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -12,8 +18,8 @@ public class MobCollision : MonoBehaviour
             Explode(col.transform.parent.rotation, col.transform.parent.parent.localScale);
         }
         
-        if (col.CompareTag("Campfire")) {
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().GameOver();
+        if (gc.playing && col.CompareTag("Campfire")) {
+            gc.GameOver();
         }
     }
     

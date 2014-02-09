@@ -3,17 +3,13 @@ using System.Collections;
 
 public class CampfireFlicker : MonoBehaviour
 {
-    public float fromLightIntensity;
-    public float toLightIntensity;
-    public float speed;
-    // Update is called once per frame
-    void Start()
+    public void BurnOutStart()
     {
-        iTween.ValueTo(gameObject, iTween.Hash("from", fromLightIntensity, "to", toLightIntensity, "speed", speed, "loopType", "pingPong", "onUpdate", "ChangeIntensity"));
+        GetComponent<Animator>().SetBool("IsGoingOut", true);
     }
     
-    void ChangeIntensity(float value)
+    void BurnOutFinish()
     {
-        light.intensity = value;
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().FireIsOut();
     }
 }

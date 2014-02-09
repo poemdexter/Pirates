@@ -8,7 +8,8 @@ public class GameController : MonoBehaviour
     public float spawnRate;
     float currentTime;
     Transform[] spawnpoints;
-    bool playing;
+    public bool playing { get; private set; }
+    bool fireOut = false;
     
     void Start()
     {
@@ -27,14 +28,19 @@ public class GameController : MonoBehaviour
             GameObject s = (GameObject)Instantiate(skeleton, spawnpoints[Random.Range(0, transform.childCount)].position, Quaternion.identity);
             s.transform.parent = trash;
         }
+        
+        if (!playing && fireOut)
+            Application.LoadLevel("title");
     }
     
     public void GameOver()
     {
         playing = false;
-        currentTime = 0;
-        foreach (Transform child in trash) {
-            Destroy(child.gameObject);
-        }
+        GameObject.FindGameObjectWithTag("Campfire").GetComponent<CampfireFlicker>().BurnOutStart();
+    }
+    
+    public void FireIsOut()
+    {
+        fireOut = true;
     }
 }

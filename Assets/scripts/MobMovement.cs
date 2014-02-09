@@ -4,9 +4,15 @@ using System.Collections;
 public class MobMovement : MonoBehaviour
 {
     public float speed;
+    GameController gc;
     
+    void Start()
+    {
+        gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+    }
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, Vector3.zero, speed * Time.deltaTime);
+        if (gc.playing)
+            transform.position = Vector3.MoveTowards(transform.position, Vector3.zero, speed * Time.deltaTime);
     }
 }
