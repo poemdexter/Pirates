@@ -17,3 +17,8 @@ Assets/TK2DROOT.meta
 # Playmaker
 Assets/playmaker/
 Assets/playmaker.meta
+Assets/Photon
+
+# Photon Networking
+Assets/Photon/
+Assets/Photon.meta
