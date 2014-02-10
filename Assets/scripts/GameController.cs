@@ -43,4 +43,9 @@ public class GameController : MonoBehaviour
     {
         fireOut = true;
     }
+    
+    public bool IsUsingController()
+    {
+        return Input.GetJoystickNames().Length > 0;
+    }
 }
