@@ -17,7 +17,7 @@ public class PlayerSwingSword : MonoBehaviour
         if ((Input.GetButtonDown("Attack") || Input.GetAxis("Attack") < 0) && !isSwinging) {
             isSwinging = true;
             startRotation = transform.rotation;
-            audio.Play();
+            GetComponent<AudioSource>().Play();
         }
         
         if (isSwinging)

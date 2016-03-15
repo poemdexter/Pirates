@@ -28,7 +28,7 @@ public class MobCollision : MonoBehaviour
         // shake screen
         Camera.main.GetComponent<ScreenShake>().Shake();
         // create parts
-        rigidbody2D.isKinematic = true;
+        GetComponent<Rigidbody2D>().isKinematic = true;
         GameObject obj = (GameObject)Instantiate(deathParts, transform.position, rotation);
         obj.transform.localScale = scale;
         obj.transform.parent = transform.parent;

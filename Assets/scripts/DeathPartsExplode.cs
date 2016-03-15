@@ -11,10 +11,10 @@ public class DeathPartsExplode : MonoBehaviour
     {
         if (!isExploded) {
             isExploded = true;
-            audio.Play();
+            GetComponent<AudioSource>().Play();
             foreach (Transform child in transform) {
-                child.rigidbody2D.AddForce(GetRandomKnockbackForce());
-                child.rigidbody2D.AddTorque(Random.Range(-rotationForce, rotationForce));
+                child.GetComponent<Rigidbody2D>().AddForce(GetRandomKnockbackForce());
+                child.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-rotationForce, rotationForce));
             }
         }
     }
